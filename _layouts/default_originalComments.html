@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+
+    <link rel="stylesheet" type="text/css" 
+      href="https://wangkun19930608.github.io/assets/css/straybirds.css" media="screen" />
+    <link rel="stylesheet" type="text/css" 
+      href="https://wangkun19930608.github.io/assets/css/pygments.css" media="screen" />
+    <script type="text/javascript"
+    src="https://wangkun19930608.github.io/assets/javascripts/main.js">
+    </script>
+    <!-- MathJax Section Start -->
+
+    <!-- <script type="text/javascript" -->
+    <!-- src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> -->
+    <!-- </script> -->
+    
+<script>
+	
+</script>
+
+    <!-- MathJax Section End -->
+
+    <!-- Google Analytics Start-->
+    <!-- {% include google_analytics.ext %} -->
+    <!-- Google Analytics End -->
+
+    <title>{{ page.title }}</title>
+	
+	
+	
+	<script type="text/javascript">
+	Clrs=new Array('ff0000','00ff30','ffffff','ff00ff','ffa500','ffff00','00ff00','ffffff','ff00ff')
+    var Follow = function () {
+    var $ = function (i) {return document.getElementById(i)},
+    addEvent = function (o, e, f) {o.addEventListener ? o.addEventListener(e, f, false) : o.attachEvent('on'+e, function(){f.call(o)})},
+    OBJ = [], sp, rs, N = 0, m;
+    var init = function (id, config) {
+    this.config = config || {};
+    this.obj = $(id);
+    sp = this.config.speed || 4;
+    rs = this.config.animR || 1;
+    m = {x: $(id).offsetWidth * .5, y: $(id).offsetHeight * .5};
+    this.setXY();
+    this.start();
+    }
+    init.prototype = {
+    setXY : function () {
+    var _this = this;
+    addEvent(this.obj, 'mousemove', function (e) {
+    e = e || window.event;
+    m.x = e.clientX;
+    m.y = e.clientY;
+    })
+    },
+    start : function () {
+    var k = 180 / Math.PI, OO, o, _this = this, fn = this.config.fn;
+    OBJ[N++] = OO = new CObj(null, 0, 0);
+    for(var i=0;i<360;i+=9){
+    var O = OO;
+    for(var j=359; j<360; j+=360){
+    var x = fn(i, j).x,
+    y = fn(i, j).y;
+    OBJ[N++] = o = new CObj(O , x, y);
+    O = o;
+    }
+    }
+    setInterval(function() {
+    for (var i = 0; i < N; i++) OBJ[i].run();
+    }, 20);
+    }
+    }
+    var CObj = function (p, cx, cy) {
+    var obj = document.createElement("span");
+    this.css = obj.style;
+    this.css.position = "absolute";
+    this.css.left = "-1000px";
+    this.css.background = '#2e2';
+    this.css.zIndex = 1000 - N;
+    document.getElementById("screen").appendChild(obj);
+    this.ddx = 0;
+    this.ddy = 0;
+    this.PX = 0;
+    this.PY = 0;
+    this.x = 0;
+    this.y = 0;
+    this.x0 = 0;
+    this.y0 = 0;
+    this.cx = cx;
+    this.cy = cy;
+    this.parent = p;
+    }
+    CObj.prototype.run = function () {
+    if (!this.parent) {
+    this.x0 = m.x;
+    this.y0 = m.y;
+    } else {
+    this.x0 = this.parent.x;
+    this.y0 = this.parent.y;
+    }
+    this.x = this.PX += (this.ddx += ((this.x0 - this.PX - this.ddx) + this.cx) / rs) / sp;
+    this.y = this.PY += (this.ddy += ((this.y0 - this.PY - this.ddy) + this.cy) / rs) / sp;
+    this.css.left = Math.round(this.x) + 'px';
+    this.css.top = Math.round(this.y) + 'px';
+    }
+    return init;
+    }();
+    </script>
+	
+	<!-- <script> -->
+        <!-- MathJax.Hub.Config({ -->
+              <!-- tex2jax: { -->
+              <!-- skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'] -->
+              <!-- } -->
+        <!-- }); -->
+        <!-- MathJax.Hub.Queue(function() { -->
+            <!-- var all = MathJax.Hub.getAllJax(), i; -->
+            <!-- for(i=0; i < all.length; i += 1) { -->
+                <!-- all[i].SourceElement().parentNode.className += ' has-jax'; -->
+            <!-- } -->
+        <!-- }); -->
+    <!-- </script> -->
+	
+	
+
+  </head>
+
+  <body id="screen"  >
+	 <div id="headtitle"  >
+	 </div>
+	 <script>loadHeadDiv(); </script>
+  <!--
+	<iframe src="" name="iframe" id='visi2' style="width:100%;height:100%;display:none;position:inherit" onload="changeFrameHeight()"  >
+    </iframe>
+-->
+	<div id ='visi3' style="width:100%;display:none;height:100%;position:relative"  >
+	</div>
+	
+	<!-- <script>load_home('visi3','https://www.baidu.com/');</script> -->
+
+    <div class="container" id='visi1' >
+
+      <header>
+        <div class="container">
+          <h1>
+              <a href="/" title="Home Page"> *坤的 </a><br/>
+          <span class="github-src">
+            <a href ="https://github.com/wangkun19930608/wangkun19930608.github.io"
+               target="_blank"
+               title="Fork me on GitHub">
+              <img src="/assets/images/GitHub-Mark-Light-32px.png" alt="">
+            </a>
+          </span>
+          </h1>
+        </div>
+      </header>
+<!--
+      <aside id="left-side">
+        {% include categories.ext %}
+      </aside>
+
+      <aside id="right-side">
+        {% include archives.ext %}
+      </aside>
+-->
+      <article>
+
+{{ content }}
+
+      </article>
+
+      <div class="comments">
+        {% if page.comments %}
+          {% include comments.ext %}
+        {% endif %}
+      </div>
+	
+	
+	</div>
+	
+	<div id='footdiv' >
+	 </div>
+	 <script>load_home('footdiv','foot.html');</script>
+    
+	
+ </body>
+ 
+ 
+ <script type="text/javascript">
+    new Follow('screen', {
+    speed: 4,
+    animR : 2,
+    fn : function (i, j) {
+    return {
+    x : j/4*Math.cos(i),
+    y : j/4*Math.sin(i)
+    }
+    }
+    })
+    </script>
+	 
+</html>
